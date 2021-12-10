@@ -16,6 +16,8 @@ public class Hand : MonoBehaviour
     [SerializeField] float maxGrabGrip = 0.8f;
     [SerializeField] float gripCheckSphereRadius = 0.1f; 
     [SerializeField] Transform palmPosition = null;
+    [SerializeField] LayerMask uiLayer = new LayerMask();
+    [SerializeField] float distToCheckForUI = 10f;
     [SerializeField] string triggerFieldName = "trigger";
     [SerializeField] string gripFieldName = "grip";
 
@@ -55,6 +57,51 @@ public class Hand : MonoBehaviour
     {
         PhysicsHand();
         GripHand();
+        UICheck();
+    }
+
+    private void UICheck()
+    {
+        RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, distToCheckForUI, uiLayer.value);
+
+        if (hits.Length == 0)
+            return;
+
+        int validHitIndex = -1;
+
+        float closestDist = float.MaxValue;
+
+        for (int i = 0; i < hits.Length; ++i)
+        {
+            RaycastHit hit = hits[i];
+
+            if (Vector3.Dot(-hit.collider.transform.forward, (transform.position - hit.point)) <= 0)
+                continue;
+
+            float dist = (transform.position - hit.point).magnitude;
+            if (dist < closestDist)
+            {
+                closestDist = dist;
+                validHitIndex = i;
+            }
+        }
+
+        if (validHitIndex < 0)
+            return;
+
+        RaycastHit validHit = hits[validHitIndex];
+        Canvas canvas = validHit.collider.GetComponent<Canvas>();
+        if (canvas == null)
+            return;
+
+        Vector3 relativePoint = validHit.point - canvas.transform.position;
+
+        relativePoint = Quaternion.Inverse(canvas.transform.rotation) * relativePoint;
+
+        relativePoint.x /= canvas.transform.localScale.x;
+        relativePoint.y /= canvas.transform.localScale.y;
+
+        Debug.Log("Hit point: " + relativePoint);
     }
 
     void Update()
