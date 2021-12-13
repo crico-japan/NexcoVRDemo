@@ -66,7 +66,7 @@ public class Hand : MonoBehaviour
 
     private void UICheck()
     {
-        pointerDown = gripTarget >= pointerDownThreshold;
+        pointerDown = triggerTarget >= pointerDownThreshold;
         hitCanvas = null;
 
         RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, distToCheckForUI, uiLayer.value);
