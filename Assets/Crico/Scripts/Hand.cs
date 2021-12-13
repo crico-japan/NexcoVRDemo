@@ -17,6 +17,7 @@ public class Hand : MonoBehaviour
     [SerializeField] float gripCheckSphereRadius = 0.1f; 
     [SerializeField] Transform palmPosition = null;
     [SerializeField] LayerMask uiLayer = new LayerMask();
+    [SerializeField] float pointerDownThreshold = 0.9f;
     [SerializeField] float distToCheckForUI = 10f;
     [SerializeField] string triggerFieldName = "trigger";
     [SerializeField] string gripFieldName = "grip";
@@ -37,6 +38,9 @@ public class Hand : MonoBehaviour
 
     Transform followTarget;
 
+    public Canvas hitCanvas { get; private set; } = null;
+    public Vector3 hitCanvasWorldPoint { get; private set; } = new Vector3();
+    public bool pointerDown { get; private set; } = false;
 
     private void Awake()
     {
@@ -62,6 +66,9 @@ public class Hand : MonoBehaviour
 
     private void UICheck()
     {
+        pointerDown = gripTarget >= pointerDownThreshold;
+        hitCanvas = null;
+
         RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, distToCheckForUI, uiLayer.value);
 
         if (hits.Length == 0)
@@ -94,14 +101,16 @@ public class Hand : MonoBehaviour
         if (canvas == null)
             return;
 
+        /*
         Vector3 relativePoint = validHit.point - canvas.transform.position;
 
         relativePoint = Quaternion.Inverse(canvas.transform.rotation) * relativePoint;
 
         relativePoint.x /= canvas.transform.localScale.x;
-        relativePoint.y /= canvas.transform.localScale.y;
+        relativePoint.y /= canvas.transform.localScale.y;*/
 
-        Debug.Log("Hit point: " + relativePoint);
+        hitCanvasWorldPoint = validHit.point;
+        hitCanvas = canvas;
     }
 
     void Update()
