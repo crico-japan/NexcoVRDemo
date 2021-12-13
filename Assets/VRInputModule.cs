@@ -121,8 +121,7 @@ namespace UnityEngine.EventSystems
 
         void ProcessPointerRelease(PointerEventData pointerEvent, GameObject currentOverGo)
         {
-            var pointerUpHandler = ExecuteEvents.GetEventHandler<IPointerUpHandler>(currentOverGo);
-            ExecuteEvents.Execute(pointerUpHandler, pointerEvent, ExecuteEvents.pointerUpHandler);
+            ExecuteEvents.Execute(pointerEvent.pointerPress, pointerEvent, ExecuteEvents.pointerUpHandler);
 
             var pointerClickHandler = ExecuteEvents.GetEventHandler<IPointerClickHandler>(currentOverGo);
 
@@ -157,12 +156,6 @@ namespace UnityEngine.EventSystems
                 HandlePointerExitAndEnter(pointerEvent, currentOverGo);
             }
 
-        }
-
-
-        protected override void ProcessMove(PointerEventData pointerEvent)
-        {
-            base.ProcessMove(pointerEvent);
         }
 
         protected override void ProcessDrag(PointerEventData pointerEvent)
