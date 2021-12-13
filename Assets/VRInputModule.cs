@@ -13,7 +13,7 @@ namespace UnityEngine.EventSystems
 
         bool pointerDownLastFrame = false;
 
-        PointerEventData pointerEvent = null;
+        PointerEventData storedPointerEvent = null;
 
         protected override void Awake()
         {
@@ -27,7 +27,7 @@ namespace UnityEngine.EventSystems
         {
             if (hand.hitCanvas == null)
             {
-                pointerEvent = null;
+                storedPointerEvent = null;
                 pointerDownLastFrame = false;
                 return;
             }
@@ -35,9 +35,13 @@ namespace UnityEngine.EventSystems
             Vector3 worldPoint = hand.hitCanvasWorldPoint;
             Vector3 screenPoint = camera.WorldToScreenPoint(worldPoint);
 
+            PointerEventData pointerEvent = storedPointerEvent;
             if (pointerEvent == null)
+            {
                 pointerEvent = new PointerEventData(eventSystem);
-                
+
+                storedPointerEvent = pointerEvent;
+            }
 
             pointerEvent.position = screenPoint;
             pointerEvent.delta = pointerEvent.position - pointerEvent.pressPosition;
@@ -152,8 +156,6 @@ namespace UnityEngine.EventSystems
                 HandlePointerExitAndEnter(pointerEvent, null);
                 HandlePointerExitAndEnter(pointerEvent, currentOverGo);
             }
-
-            pointerEvent = pointerEvent;
 
         }
 
