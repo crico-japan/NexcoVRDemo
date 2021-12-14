@@ -39,22 +39,28 @@ namespace UnityEngine.EventSystems
 
             if (canvas == null)
             {
+                if (visualPointerHolder != null)
+                {
+                    visualPointerHolder.SetPointerActive(false);
+                    visualPointerHolder = null;
+                }
+
                 if (pointerDownCanvas != null)
                 {
                     canvas = pointerDownCanvas;
                 }
                 else
                 {
-                    if (visualPointerHolder != null)
-                    {
-                        visualPointerHolder.SetPointerActive(false);
-                        visualPointerHolder = null;
-                    }
 
                     storedPointerEvent = null;
                     pointerDownLastFrame = false;
                     return;
                 }
+            }
+            else
+            {
+                visualPointerHolder = canvas.GetComponent<CanvasVisualPointerHolder>();
+                visualPointerHolder.SetPointerActive(true);
             }
 
             Plane plane = new Plane(canvas.transform.forward, 0f);
@@ -67,13 +73,9 @@ namespace UnityEngine.EventSystems
 
             Vector3 worldPoint =  canvas.transform.position + rayOrigin + rayDir * dist;
             Vector3 screenPoint = camera.WorldToScreenPoint(worldPoint);
-
-
-            visualPointerHolder = canvas.GetComponent<CanvasVisualPointerHolder>();
+            
             if (visualPointerHolder != null)
             {
-                visualPointerHolder.SetPointerActive(true);
-
                 Vector2 distFromCentre = worldPoint - canvas.transform.position;
 
                 distFromCentre = Quaternion.Inverse(canvas.transform.rotation) * distFromCentre;
