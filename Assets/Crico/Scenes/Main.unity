@@ -1022,6 +1022,8 @@ MonoBehaviour:
   uiLayer:
     serializedVersion: 2
     m_Bits: 0
+  pointerLine: {fileID: 0}
+  pointerLineDownMat: {fileID: 0}
   pointerDownThreshold: 0.9
   distToCheckForUI: 10
   triggerFieldName: trigger
@@ -2665,6 +2667,8 @@ MonoBehaviour:
   uiLayer:
     serializedVersion: 2
     m_Bits: 32
+  pointerLine: {fileID: 1453695056}
+  pointerLineDownMat: {fileID: 2100000, guid: 6d0e03f431ce179478b3910bf7c1c9da, type: 2}
   pointerDownThreshold: 0.9
   distToCheckForUI: 10
   triggerFieldName: trigger
@@ -2906,7 +2910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1453695055}
   - component: {fileID: 1453695056}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: LineRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

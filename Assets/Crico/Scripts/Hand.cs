@@ -17,6 +17,8 @@ public class Hand : MonoBehaviour
     [SerializeField] float gripCheckSphereRadius = 0.1f; 
     [SerializeField] Transform palmPosition = null;
     [SerializeField] LayerMask uiLayer = new LayerMask();
+    [SerializeField] LineRenderer pointerLine = null;
+    [SerializeField] Material pointerLineDownMat = null;
     [SerializeField] float pointerDownThreshold = 0.9f;
     [SerializeField] float distToCheckForUI = 10f;
     [SerializeField] string triggerFieldName = "trigger";
@@ -40,12 +42,16 @@ public class Hand : MonoBehaviour
 
     public Canvas hitCanvas { get; private set; } = null;
     public bool pointerDown { get; private set; } = false;
+    Material pointerLineOrigMat;
 
     private void Awake()
     {
         Assert.IsNotNull(palmPosition);
         Assert.IsNotNull(followTargetController);
         this.rigidbody = GetComponent<Rigidbody>();
+
+        if (pointerLine != null)
+            Assert.IsNotNull(pointerLineDownMat);
     }
 
     void Start()
@@ -53,6 +59,9 @@ public class Hand : MonoBehaviour
         animator = GetComponent<Animator>();
         followTarget = followTargetController;
         rigidbody.maxAngularVelocity = maxAngularVelocity;
+
+        if (pointerLine != null)
+            pointerLineOrigMat = pointerLine.material;
     }
 
 
@@ -66,6 +75,13 @@ public class Hand : MonoBehaviour
     private void UICheck()
     {
         pointerDown = triggerTarget >= pointerDownThreshold;
+        if (pointerLine != null)
+        {
+            Material nextMat = pointerDown ? pointerLineDownMat : pointerLineOrigMat;
+            if (nextMat != pointerLine.material)
+                pointerLine.material = nextMat;
+        }
+
         hitCanvas = null;
 
         RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, distToCheckForUI, uiLayer.value);

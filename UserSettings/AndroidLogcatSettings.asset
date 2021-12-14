@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "1WMHHB6A021435",
         "name": "com.cricojapan.vrmovement",
-        "processId": 14153,
+        "processId": 14497,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -186,6 +186,12 @@
             "deviceId": "1WMHHB6A021435",
             "name": "com.cricojapan.vrmovement",
             "processId": 14153,
+            "exited": false
+        },
+        {
+            "deviceId": "1WMHHB6A021435",
+            "name": "com.cricojapan.vrmovement",
+            "processId": 14497,
             "exited": false
         }
     ],
