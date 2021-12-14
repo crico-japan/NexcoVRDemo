@@ -39,7 +39,6 @@ public class Hand : MonoBehaviour
     Transform followTarget;
 
     public Canvas hitCanvas { get; private set; } = null;
-    public Vector3 hitCanvasWorldPoint { get; private set; } = new Vector3();
     public bool pointerDown { get; private set; } = false;
 
     private void Awake()
@@ -109,7 +108,6 @@ public class Hand : MonoBehaviour
         relativePoint.x /= canvas.transform.localScale.x;
         relativePoint.y /= canvas.transform.localScale.y;*/
 
-        hitCanvasWorldPoint = validHit.point;
         hitCanvas = canvas;
     }
 

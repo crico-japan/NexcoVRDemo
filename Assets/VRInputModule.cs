@@ -12,6 +12,8 @@ namespace UnityEngine.EventSystems
         [SerializeField] Hand hand = null;
 
         bool pointerDownLastFrame = false;
+        Canvas pointerDownCanvas;
+        CanvasVisualPointerHolder visualPointerHolder;
 
         PointerEventData storedPointerEvent = null;
 
@@ -25,22 +27,61 @@ namespace UnityEngine.EventSystems
 
         public override void Process()
         {
-            if (hand.hitCanvas == null)
-            {
-                storedPointerEvent = null;
-                pointerDownLastFrame = false;
-                return;
-            }
-
-            Vector3 worldPoint = hand.hitCanvasWorldPoint;
-            Vector3 screenPoint = camera.WorldToScreenPoint(worldPoint);
-
             PointerEventData pointerEvent = storedPointerEvent;
             if (pointerEvent == null)
             {
                 pointerEvent = new PointerEventData(eventSystem);
-
                 storedPointerEvent = pointerEvent;
+            }
+
+            Canvas canvas = hand.hitCanvas;
+            bool pointerDownThisFrame = hand.pointerDown && !pointerDownLastFrame;
+
+            if (canvas == null)
+            {
+                if (pointerDownCanvas != null)
+                {
+                    canvas = pointerDownCanvas;
+                }
+                else
+                {
+                    if (visualPointerHolder != null)
+                    {
+                        visualPointerHolder.SetPointerActive(false);
+                        visualPointerHolder = null;
+                    }
+
+                    storedPointerEvent = null;
+                    pointerDownLastFrame = false;
+                    return;
+                }
+            }
+
+            Plane plane = new Plane(canvas.transform.forward, 0f);
+            Vector3 rayOrigin = hand.transform.position - canvas.transform.position;
+            Vector3 rayDir = hand.transform.forward;
+            Ray ray = new Ray(rayOrigin, rayDir);
+
+            float dist = 0f;
+            plane.Raycast(ray, out dist);
+
+            Vector3 worldPoint =  canvas.transform.position + rayOrigin + rayDir * dist;
+            Vector3 screenPoint = camera.WorldToScreenPoint(worldPoint);
+
+
+            visualPointerHolder = canvas.GetComponent<CanvasVisualPointerHolder>();
+            if (visualPointerHolder != null)
+            {
+                visualPointerHolder.SetPointerActive(true);
+
+                Vector2 distFromCentre = worldPoint - canvas.transform.position;
+
+                distFromCentre = Quaternion.Inverse(canvas.transform.rotation) * distFromCentre;
+
+                distFromCentre.x /= canvas.transform.localScale.x;
+                distFromCentre.y /= canvas.transform.localScale.y;
+
+                visualPointerHolder.SetPointerPos(distFromCentre);
             }
 
             pointerEvent.position = screenPoint;
@@ -51,13 +92,12 @@ namespace UnityEngine.EventSystems
             
             pointerEvent.pointerCurrentRaycast = FindFirstRaycast(raycastResults);
 
-            bool pointerDownThisFrame = hand.pointerDown && !pointerDownLastFrame;
-
             GameObject currentOverGo = pointerEvent.pointerCurrentRaycast.gameObject;
 
             if (pointerDownThisFrame)
             {
                 ProcessPointerPress(pointerEvent, currentOverGo);
+                pointerDownCanvas = canvas;
             }
 
             bool pointerReleasedThisFrame = !hand.pointerDown && pointerDownLastFrame;
@@ -65,6 +105,7 @@ namespace UnityEngine.EventSystems
             if (pointerReleasedThisFrame)
             {
                 ProcessPointerRelease(pointerEvent, currentOverGo);
+                pointerDownCanvas = null;
             }
 
             pointerDownLastFrame = hand.pointerDown;
