@@ -64,7 +64,6 @@ public class Hand : MonoBehaviour
             pointerLineOrigMat = pointerLine.material;
     }
 
-
     private void FixedUpdate()
     {
         PhysicsHand();
@@ -115,14 +114,6 @@ public class Hand : MonoBehaviour
         Canvas canvas = validHit.collider.GetComponent<Canvas>();
         if (canvas == null)
             return;
-
-        /*
-        Vector3 relativePoint = validHit.point - canvas.transform.position;
-
-        relativePoint = Quaternion.Inverse(canvas.transform.rotation) * relativePoint;
-
-        relativePoint.x /= canvas.transform.localScale.x;
-        relativePoint.y /= canvas.transform.localScale.y;*/
 
         hitCanvas = canvas;
     }

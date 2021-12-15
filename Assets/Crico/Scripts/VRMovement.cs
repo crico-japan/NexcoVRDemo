@@ -33,6 +33,7 @@ namespace Crico.VR
         [SerializeField] string rightHorizontalAxisName = "RHorizontal";
         [SerializeField] string rightVerticalAxisName = "RVertical";
         [SerializeField] string jumpButtonName = "Confirm";
+        [SerializeField] bool jumpEnabled = false;
         [SerializeField] GameObject moveMarker = null;
         [SerializeField] ProjectilePath movePath = null;
         [SerializeField] Material movePathInvalidMat = null;
@@ -124,7 +125,7 @@ namespace Crico.VR
             }
 
             if (!triggerJump)
-                triggerJump = Input.GetButtonDown(jumpButtonName);
+                triggerJump = jumpEnabled && Input.GetButtonDown(jumpButtonName);
         }
 
         Vector2 GetLeftStick()

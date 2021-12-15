@@ -14,7 +14,7 @@ public class FollowObjectTransform : MonoBehaviour
     [SerializeField] Transform objectToFollowRotate = null;
 
     bool rotating;
-    Vector3 current = Vector3.forward;
+    Quaternion currentRot = Quaternion.identity;
 
     private void Awake()
     {
@@ -24,15 +24,16 @@ public class FollowObjectTransform : MonoBehaviour
 
     private void Start()
     {
-        current = transform.forward;
+        currentRot = Quaternion.LookRotation(transform.forward);
     }
 
     private void LateUpdate()
     {
-        Vector3 position = objectToFollowPos.position + transform.rotation * offset;
+        Vector3 position = objectToFollowPos.position + currentRot * offset;
         this.transform.position = position;
 
-        float angle = Vector3.Angle(current, objectToFollowRotate.forward);
+        Vector3 currentForward = transform.forward;
+        float angle = Vector3.Angle(currentForward, objectToFollowRotate.forward);
 
         if (!rotating)
         {
@@ -50,9 +51,9 @@ public class FollowObjectTransform : MonoBehaviour
 
         float currentSpeed = angle * rotationSpeed;
         float rotateAmount = currentSpeed * Time.deltaTime;
-
-        Quaternion newRot = Quaternion.RotateTowards(transform.rotation, objectToFollowRotate.rotation, rotateAmount);
+        Quaternion targetRotation = Quaternion.LookRotation(transform.forward);
+        Quaternion newRot = Quaternion.RotateTowards(targetRotation, objectToFollowRotate.rotation, rotateAmount);
         transform.rotation = newRot;
-        current = transform.forward;
+        currentRot = newRot;
     }
 }

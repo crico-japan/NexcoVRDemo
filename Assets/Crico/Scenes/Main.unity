@@ -442,9 +442,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 1.6}
   rotationSpeed: 8
-  rotateStartAngle: 50
+  rotateStartAngle: 33
   rotateEndAngle: 1
-  objectToFollowPos: {fileID: 1725982594}
+  objectToFollowPos: {fileID: 963194228}
   objectToFollowRotate: {fileID: 1818995671}
 --- !u!1001 &133018154
 PrefabInstance:
@@ -1165,6 +1165,38 @@ MonoBehaviour:
   hand: {fileID: 1109494913}
   triggerAxisName: RTrigger
   gripAxisName: RGrip
+  cancelButtonName: Cancel
+  submitButtonName: Submit
+  onCancelButtonDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1444659135}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSubmitButtonDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1444659135}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!850595691 &571003120
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2232,8 +2264,8 @@ RectTransform:
   m_Father: {fileID: 2025051787}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2840,7 +2872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1444659136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4238,6 +4270,7 @@ MonoBehaviour:
   rightHorizontalAxisName: RHorizontal
   rightVerticalAxisName: RVertical
   jumpButtonName: Submit
+  jumpEnabled: 0
   moveMarker: {fileID: 1463764902}
   movePath: {fileID: 649201819}
   movePathInvalidMat: {fileID: 2100000, guid: 9eeba89513023324b8e0413de33edc06, type: 2}
@@ -4338,6 +4371,14 @@ MonoBehaviour:
   hand: {fileID: 520228132}
   triggerAxisName: LTrigger
   gripAxisName: LGrip
+  cancelButtonName: Cancel
+  submitButtonName: Submit
+  onCancelButtonDown:
+    m_PersistentCalls:
+      m_Calls: []
+  onSubmitButtonDown:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1773658175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4853,7 +4894,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
