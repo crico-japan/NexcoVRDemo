@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "1WMHHB6A021435",
         "name": "com.cricojapan.vrmovement",
-        "processId": 14497,
+        "processId": 7356,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,187 +11,49 @@
         {
             "deviceId": "1WMHHB6A021435",
             "name": "com.cricojapan.vrmovement",
-            "processId": 6596,
+            "processId": 14497,
             "exited": true
         },
         {
             "deviceId": "1WMHHB6A021435",
             "name": "com.cricojapan.vrmovement",
-            "processId": 6963,
+            "processId": 14979,
             "exited": true
         },
         {
             "deviceId": "1WMHHB6A021435",
             "name": "com.cricojapan.vrmovement",
-            "processId": 7241,
+            "processId": 15716,
             "exited": true
         },
         {
             "deviceId": "1WMHHB6A021435",
             "name": "com.cricojapan.vrmovement",
-            "processId": 7499,
+            "processId": 4088,
             "exited": true
         },
         {
             "deviceId": "1WMHHB6A021435",
             "name": "com.cricojapan.vrmovement",
-            "processId": 7590,
+            "processId": 5508,
             "exited": true
+        },
+        {
+            "deviceId": "1WMHHB6A021435",
+            "name": "com.oculus.os.vrusb",
+            "processId": 1809,
+            "exited": false
         },
         {
             "deviceId": "1WMHHB6A021435",
             "name": "com.oculus.shellenv",
-            "processId": 1848,
+            "processId": 6730,
             "exited": false
         },
         {
             "deviceId": "1WMHHB6A021435",
             "name": "com.cricojapan.vrmovement",
-            "processId": 5526,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 5940,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 4005,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 5203,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 6160,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 7347,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 8197,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 8579,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 9271,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 4477,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 8847,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 9519,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 9970,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 10310,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 10884,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 11201,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 11616,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 11960,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 12261,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 12608,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 13133,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 13490,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 13828,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 14153,
-            "exited": false
-        },
-        {
-            "deviceId": "1WMHHB6A021435",
-            "name": "com.cricojapan.vrmovement",
-            "processId": 14497,
+            "processId": 7356,
             "exited": false
         }
     ],
