@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "d4b12ae3",
+    "m_SelectedDeviceId": "1WMHHB6A021435",
     "m_SelectedPackage": {
         "deviceId": "1WMHHB6A021435",
         "name": "com.cricojapan.vrmovement",
-        "processId": 13596,
+        "processId": 3977,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -72,6 +72,12 @@
             "deviceId": "1WMHHB6A021435",
             "name": "com.cricojapan.vrmovement",
             "processId": 13596,
+            "exited": false
+        },
+        {
+            "deviceId": "1WMHHB6A021435",
+            "name": "com.cricojapan.vrmovement",
+            "processId": 3977,
             "exited": false
         }
     ],
