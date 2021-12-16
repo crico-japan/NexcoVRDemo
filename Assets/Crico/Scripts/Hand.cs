@@ -64,6 +64,15 @@ public class Hand : MonoBehaviour
             pointerLineOrigMat = pointerLine.material;
     }
 
+    private void OnEnable()
+    {
+        if (followTarget != null)
+        {
+            rigidbody.position = followTarget.position;
+            rigidbody.rotation = followTarget.rotation;
+        }
+
+    }
     private void FixedUpdate()
     {
         PhysicsHand();

@@ -76,7 +76,7 @@ namespace UnityEngine.EventSystems
             
             if (visualPointerHolder != null)
             {
-                Vector2 distFromCentre = worldPoint - canvas.transform.position;
+                Vector3 distFromCentre = worldPoint - canvas.transform.position;
 
                 distFromCentre = Quaternion.Inverse(canvas.transform.rotation) * distFromCentre;
 

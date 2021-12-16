@@ -51,7 +51,7 @@ public class FollowObjectTransform : MonoBehaviour
 
         float currentSpeed = angle * rotationSpeed;
         float rotateAmount = currentSpeed * Time.deltaTime;
-        Quaternion targetRotation = Quaternion.LookRotation(transform.forward);
+        Quaternion targetRotation = Quaternion.LookRotation(transform.forward, transform.up);
         Quaternion newRot = Quaternion.RotateTowards(targetRotation, objectToFollowRotate.rotation, rotateAmount);
         transform.rotation = newRot;
         currentRot = newRot;
