@@ -1025,6 +1025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 1444659135}
+  timeScale: 0.7
 --- !u!4 &322675150
 Transform:
   m_ObjectHideFlags: 0
